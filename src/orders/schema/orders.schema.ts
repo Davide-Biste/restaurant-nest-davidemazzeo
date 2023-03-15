@@ -21,6 +21,13 @@ export class Order {
     },
   })
   creationDate: Date;
+
+  @Prop({
+    default(): any {
+      return new Date(Date.now() + 1000000);
+    },
+  })
+  deliveryAt: Date;
 }
 
 export const OrdersSchema = SchemaFactory.createForClass(Order);

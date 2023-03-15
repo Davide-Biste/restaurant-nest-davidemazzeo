@@ -13,4 +13,9 @@ export class OrdersController {
   async findAll(@Param('tableNum') tableNum: string) {
     return this.ordersService.getAll(tableNum);
   }
+  @Get(':tableNum/future')
+  async findAllInFuture(@Param('tableNum') tableNum: string) {
+    const currentDate = new Date(Date.now());
+    return this.ordersService.getAllInFuture(currentDate, tableNum);
+  }
 }
