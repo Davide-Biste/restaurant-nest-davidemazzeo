@@ -1,6 +1,5 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param } from '@nestjs/common';
 import { OrdersService } from './orders.service';
-import _ from 'lodash';
 
 @Controller('orders')
 export class OrdersController {
@@ -10,8 +9,8 @@ export class OrdersController {
   async create(@Body() body: any) {
     return this.ordersService.create(body);
   }
-  @Get()
-  async findAll() {
-    return this.ordersService.getAll();
+  @Get(':tableNum')
+  async findAll(@Param('tableNum') tableNum: string) {
+    return this.ordersService.getAll(tableNum);
   }
 }

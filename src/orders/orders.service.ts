@@ -23,7 +23,7 @@ export class OrdersService {
     });
     return createOrder.save();
   }
-  async getAll(): Promise<Order[]> {
-    return this.orderModel.find().populate('dishes');
+  async getAll(tableNum: any): Promise<Order[]> {
+    return this.orderModel.find({ tableNumber: tableNum }).populate('dishes');
   }
 }
